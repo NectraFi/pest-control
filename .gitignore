@@ -1,0 +1,25 @@
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+SECURITY_CERTIFICATE.txt
+malware-cleanup-report.json
+dist/
+build/
+*.tar.gz
+*.patch
+.nyc_output/
+coverage/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+malware-cleanup-report.json
+Opus 4.1 Blaze Fire Context.md
