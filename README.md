@@ -1,4 +1,3 @@
-```
   ██████╗ ███████╗███████╗████████╗     ██████╗██████╗ ██████╗ 
   ██╔══██╗██╔════╝██╔════╝╚══██╔══╝    ██╔════╝██╔══██╗██╔══██╗
   ██████╔╝█████╗  ███████╗   ██║       ██║     ██████╔╝██████╔╝
@@ -6,22 +5,22 @@
   ██║     ███████╗███████║   ██║       ╚██████╗██║  ██║██║     
   ╚═╝     ╚══════╝╚══════╝   ╚═╝        ╚═════╝╚═╝  ╚═╝╚═╝     
 
-  🚀 NPM Malware Extermination Tool v1.1.0
-  🔒 BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
-  🛡️  AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
+  🚀 NPM Malware Extermination Tool v1.1.5
+  BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
+  AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 
-# 🚨 Pest Control - Emergency NPM Malware Exterminator
+# Pest Control - Emergency NPM Malware Exterminator
 
-> ⚠️ A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
+> A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
 
-## 🚀 10-Second Fix
+## 10-Second Fix
 
 ```bash
 # Run this in your project root. It does everything.
 npx @jxrstudios/pest-control
 ```
 
-## 🔥 The Crisis
+## The Crisis
 
 The npm ecosystem has seen malicious versions of core color utilities:
 - `ansi-regex`, `ansi-styles`
@@ -30,7 +29,7 @@ The npm ecosystem has seen malicious versions of core color utilities:
 
 These exfiltrate secrets (env vars, CI tokens) and can persist via nested deps and lockfiles.
 
-## 🛡️ What This Tool Does (8-Phase Protocol)
+## What This Tool Does (8-Phase Protocol)
 
 1. SCAN — Comprehensive scan (including deep nested checks) with strict version verification
 2. EXTERMINATE — Uninstall detected threats and known variants
@@ -45,7 +44,7 @@ These exfiltrate secrets (env vars, CI tokens) and can persist via nested deps a
 7. VERIFY — Final verification scan(s) and compact dependency version audit
 8. CERTIFY — Regenerate lockfile for your PM and issue `SECURITY_CERTIFICATE.txt`
 
-## 💻 Usage
+## Usage
 
 ```bash
 npx @jxrstudios/pest-control
@@ -53,30 +52,30 @@ npx @jxrstudios/pest-control
 
 The tool runs fully unattended, with persistent spinners and phase labels so it never looks “frozen.”
 
-## ✅ When Nothing Is Detected
+## When Nothing Is Detected
 
 You’ll see “No malware detected.” Pest Control still performs full cleanup (including precautionary lockfile removal and secure reinstall) to eliminate any chance of undetected persistence.
 
-## 🔒 Enforcement Across Package Managers
+## Enforcement Across Package Managers
 
 - npm — `package.json#overrides` and a gated `preinstall` that runs `npm-force-resolutions` only for npm
 - Yarn — `package.json#resolutions` is added so Yarn enforces the same safe versions
 - pnpm — `package.json#pnpm.overrides` pins safe versions
 - After success, the lockfile is regenerated for your detected package manager
 
-## 🧾 Certification Outputs
+## Certification Outputs
 
 - `package.json`: a `pestControl` block with certificate ID, timestamp, and status
 - `package-lock.json`: a `pestControl` block reflecting enforced safe versions (npm)
 - `SECURITY_CERTIFICATE.txt`: human-readable certificate summary
 
-## 🤔 Why Trust This?
+## Why Trust This?
 
 - Zero Dependencies — Native Node.js only
 - Transparent — Simple, readable code
 - Safe Defaults — Focused file ops with clear logs and backups via lockfile regen
 
-## 📚 Resources
+## Resources
 
 - Official advisory: https://github.com/advisories/GHSA-jvhh-2m83-6w29
 - Socket.dev blog: https://socket.dev/blog/ansi-regex-malware
@@ -85,7 +84,7 @@ You’ll see “No malware detected.” Pest Control still performs full cleanup
 
 Community-driven. Use at your own risk. Issues and PRs welcome.
 
-## ✨ Key Features
+## Key Features
 
 - Lightning-fast, zero-dependency Node.js CLI (no install required via `npx`)
 - Full 8-phase cleanup for `ansi-regex` and related supply-chain malware
@@ -96,14 +95,14 @@ Community-driven. Use at your own risk. Issues and PRs welcome.
 - Final certification: `SECURITY_CERTIFICATE.txt` and metadata in JSON files
 - Windows, macOS, and Linux support (CMD/PowerShell/Bash)
 
-## 🧩 Supported Package Managers & Platforms
+## Supported Package Managers & Platforms
 
 - npm (overrides, gated preinstall guard, package-lock regeneration)
 - Yarn (resolutions, yarn.lock re-resolution)
 - pnpm (pnpm.overrides, pnpm-lock.yaml regeneration)
 - Operating systems: Windows, macOS, Linux
 
-## ⚙️ CI/CD Integration
+## CI/CD Integration
 
 Add a pre-step to run Pest Control in your pipeline before install/build:
 
@@ -115,13 +114,13 @@ steps:
 
 For npm users, the tool also injects a gated `preinstall` script that runs `npm-force-resolutions` only when the user agent is npm, ensuring lockfile alignment prior to `npm install`.
 
-## 🧰 Troubleshooting
+## Troubleshooting
 
 - Spinner looks static in logs: spinners update the same line; the CLI is active. You can increase verbosity by running in a local terminal.
 - Lockfile regen fails (missing PM): The tool continues and logs a warning. Install the respective PM and rerun Pest Control.
 - "Unknown version" warnings: The package is not in the known safe/malware list; overrides keep you safe, but consider auditing that package.
 
-## ❓ FAQ
+## FAQ
 
 - Does this delete my code?  
   No. It deletes `node_modules` and lockfiles, then applies safe overrides/resolutions, and performs a clean reinstall.
@@ -135,7 +134,7 @@ For npm users, the tool also injects a gated `preinstall` script that runs `npm-
 - Can I run it on CI safely?  
   Yes. It is zero-dependency and uses native Node modules. Add `npx pest-control` before your install.
 
-## 🔐 Source URL Enforcement (Optional)
+## Source URL Enforcement (Optional)
 
 Pest Control can verify its source repository via a signed JWT before running. This helps ensure you’re using the authentic tool.
 
