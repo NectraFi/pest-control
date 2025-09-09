@@ -1,3 +1,5 @@
+<div align="center">
+
 ```
 ██████╗ ███████╗███████╗████████╗     ██████╗██████╗ ██████╗ 
 ██╔══██╗██╔════╝██╔════╝╚══██╔══╝    ██╔════╝██╔══██╗██╔══██╗
@@ -11,50 +13,145 @@ BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
 AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 ```
 
+</div>
+
+---
+
 # Pest Control - Emergency NPM Malware Exterminator
 
 > A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
 
-## 10-Second Fix
+## 🚀 10-Second Fix
 
 ```bash
 # Run this in your project root. It does everything.
 npx @jxrstudios/pest-control
 ```
 
-## The Crisis
+## 🔥 The Crisis
 
-The npm ecosystem has seen malicious versions of core color utilities:
-- `ansi-regex`, `ansi-styles`
-- `color-name`, `color-convert`, `color-string`
-- Other related utilities
+> **WARNING:** The npm ecosystem is under attack! Malicious versions of widely-used color utilities have been detected:
+
+| Package | Status | Impact |
+|---------|--------|--------|
+| `ansi-regex` | ⚠️ **Compromised** | Critical |
+| `ansi-styles` | ⚠️ **Compromised** | Critical |
+| `color-name` | ⚠️ **At Risk** | High |
+| `color-convert` | ⚠️ **At Risk** | High |
+| `color-string` | ⚠️ **At Risk** | High |
+
+> 💡 **Note:** These packages are used by thousands of projects and their dependencies. Even if you don't use them directly, your project might be at risk!
 
 These exfiltrate secrets (env vars, CI tokens) and can persist via nested deps and lockfiles.
 
-## What This Tool Does (8-Phase Protocol)
+## 🛡️ 8-Phase Security Protocol
 
-1. SCAN — Comprehensive scan (including deep nested checks) with strict version verification
-2. EXTERMINATE — Uninstall detected threats and known variants
-3. FIRE BLAZE — Nuclear deletion of `node_modules`
-4. COCKROACH EGGS — Precautionary lockfile removal (package-lock.json, yarn.lock, pnpm-lock.yaml, npm-shrinkwrap.json)
-5. SHIELD — Apply safe version enforcement to `package.json`:
-   - npm: `overrides`
-   - Yarn: `resolutions`
-   - pnpm: `pnpm.overrides`
-   - npm-only preinstall guard: `npx --yes npm-force-resolutions` (gated to npm UA)
-6. REBUILD — Secure reinstall with blacklisting, with persistent visual spinners
-7. VERIFY — Final verification scan(s) and compact dependency version audit
-8. CERTIFY — Regenerate lockfile for your PM and issue `SECURITY_CERTIFICATE.txt`
+<div align="center">
+  <img src="https://img.shields.io/badge/Phase%201-🔍%20SCAN-blueviolet" />
+  <img src="https://img.shields.io/badge/Phase%202-💀%20EXTERMINATE-critical" />
+  <img src="https://img.shields.io/badge/Phase%203-🔥%20FIRE%20BLAZE-orange" />
+  <img src="https://img.shields.io/badge/Phase%204-🥚%20COCKROACH%20EGGS-important" />
+  <br/>
+  <img src="https://img.shields.io/badge/Phase%205-🛡️%20SHIELD-blue" />
+  <img src="https://img.shields.io/badge/Phase%206-🔄%20REBUILD-success" />
+  <img src="https://img.shields.io/badge/Phase%207-✅%20VERIFY-brightgreen" />
+  <img src="https://img.shields.io/badge/Phase%208-📜%20CERTIFY-9cf" />
+</div>
 
-## Usage
+### 1. 🔍 **SCAN**
+> *Comprehensive deep scan with strict version verification*  
+> Scans `node_modules` (including nested dependencies) for known malicious packages and suspicious patterns.
 
+### 2. 💀 **EXTERMINATE**
+> *Removal of detected threats*  
+> Automatically uninstalls all identified malicious packages and their variants.
+
+### 3. 🔥 **FIRE BLAZE**
+> *Complete node_modules purge*  
+> Nuclear option: Removes the entire `node_modules` directory to ensure no traces remain.
+
+### 4. 🥚 **COCKROACH EGGS**
+> *Lockfile annihilation*  
+> Removes all lockfiles to prevent dependency confusion attacks:
+> - `package-lock.json`
+> - `yarn.lock`
+> - `pnpm-lock.yaml`
+> - `npm-shrinkwrap.json`
+
+### 5. 🛡️ **SHIELD**
+> *Proactive protection*  
+> Applies version overrides in `package.json` based on your package manager:
+> ```json
+> {
+>   "overrides": {
+>     "ansi-regex": "^6.0.1",
+>     "ansi-styles": "^6.2.1"
+>   }
+> }
+> ```
+> - **npm**: Uses `overrides`
+> - **Yarn**: Uses `resolutions`
+> - **pnpm**: Uses `pnpm.overrides`
+
+### 6. 🔄 **REBUILD**
+> *Secure dependency installation*  
+> Reinstalls all dependencies with visual progress indicators and blacklisting of known malicious packages.
+
+### 7. ✅ **VERIFY**
+> *Final security audit*  
+> Performs a final scan to ensure all threats are eliminated and provides a detailed security report.
+
+### 8. 📜 **CERTIFY**
+> *Documentation and verification*  
+> Generates a `SECURITY_CERTIFICATE.txt` with:
+> - Scan results
+> - Actions taken
+> - Recommended next steps
+> - Package manager specific lockfile
+
+## 🚦 Usage
+
+### Basic Usage
 ```bash
+# Run with default settings
 npx @jxrstudios/pest-control
 ```
 
-The tool runs fully unattended, with persistent spinners and phase labels so it never looks “frozen.”
+### Advanced Options
+```bash
+# Run in dry-run mode (shows what would be done without making changes)
+npx @jxrstudios/pest-control --dry-run
 
-## When Nothing Is Detected
+# Skip interactive prompts (useful for CI/CD)
+npx @jxrstudios/pest-control --yes
+
+# Set custom output directory for logs and certificates
+npx @jxrstudios/pest-control --output ./security-audit
+```
+
+### CI/CD Integration
+```yaml
+# Example GitHub Actions Workflow
+name: Security Scan
+
+on: [push, pull_request]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Run Pest Control
+        run: npx @jxrstudios/pest-control --yes
+```
+
+> 💡 **Tip:** The tool runs fully unattended with real-time progress indicators and phase labels, ensuring it never appears frozen.
+
+## 🟢 When Nothing Is Detected
 
 You’ll see “No malware detected.” Pest Control still performs full cleanup (including precautionary lockfile removal and secure reinstall) to eliminate any chance of undetected persistence.
 
