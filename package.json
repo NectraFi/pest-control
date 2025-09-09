@@ -30,8 +30,7 @@
   },
   "publishConfig": {
     "@jxrstudios:registry": "https://npm.pkg.github.com",
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "homepage": "https://github.com/NectraFi/pest-control#readme",
   "bugs": {
