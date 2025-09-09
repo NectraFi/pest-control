@@ -18,7 +18,7 @@
 
 ```bash
 # Run this in your project root. It does everything.
-npx @nectrafi/pest-control
+npx @jxrstudios/pest-control
 ```
 
 ## 🔥 The Crisis
@@ -48,7 +48,7 @@ These exfiltrate secrets (env vars, CI tokens) and can persist via nested deps a
 ## 💻 Usage
 
 ```bash
-npx @nectrafi/pest-control
+npx @jxrstudios/pest-control
 ```
 
 The tool runs fully unattended, with persistent spinners and phase labels so it never looks “frozen.”
@@ -110,7 +110,7 @@ Add a pre-step to run Pest Control in your pipeline before install/build:
 ```yaml
 steps:
   - name: Pest Control - Exterminate supply chain malware
-    run: npx @nectrafi/pest-control
+    run: npx @jxrstudios/pest-control
 ```
 
 For npm users, the tool also injects a gated `preinstall` script that runs `npm-force-resolutions` only when the user agent is npm, ensuring lockfile alignment prior to `npm install`.
