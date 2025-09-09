@@ -13,29 +13,45 @@ BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
 AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 ```
 
+[![Version](https://img.shields.io/github/v/release/jxrstudios/pest-control?color=blue&label=version&style=for-the-badge)](https://github.com/jxrstudios/pest-control/releases)
+[![License](https://img.shields.io/github/license/jxrstudios/pest-control?color=blueviolet&style=for-the-badge)](https://github.com/jxrstudios/pest-control/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/jxrstudios/pest-control?color=yellow&style=for-the-badge)](https://github.com/jxrstudios/pest-control/stargazers)
+[![Issues](https://img.shields.io/github/issues/jxrstudios/pest-control?color=orange&style=for-the-badge)](https://github.com/jxrstudios/pest-control/issues)
+[![Downloads](https://img.shields.io/npm/dt/@jxrstudios/pest-control?color=green&style=for-the-badge)](https://www.npmjs.com/package/@jxrstudios/pest-control)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/jxrstudios/pest-control/publish.yml?color=success&style=for-the-badge)](https://github.com/jxrstudios/pest-control/actions)
+
 </div>
 
 ---
 
 # Pest Control - Emergency NPM Malware Exterminator
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/releases)
-[![GitHub license](https://img.shields.io/github/license/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/commits/main)
-[![npm](https://img.shields.io/npm/dt/@jxrstudios/pest-control)](https://www.npmjs.com/package/@jxrstudios/pest-control)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jxrstudios/pest-control/publish.yml)](https://github.com/jxrstudios/pest-control/actions)
-
 
 > A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
 
-## 🚀 10-Second Fix
+## 🚀 Installation
 
+### Using npx (Recommended)
 ```bash
 # Run this in your project root. It does everything.
 npx @jxrstudios/pest-control
 ```
+
+### Install from GitHub Packages
+1. Create a GitHub Personal Access Token with `read:packages` scope
+2. Add the following to your `~/.npmrc`:
+   ```
+   @jxrstudios:registry=https://npm.pkg.github.com/
+   //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+   ```
+3. Install the package:
+   ```bash
+   npm install @jxrstudios/pest-control
+   ```
+4. Run the tool:
+   ```bash
+   npx pest-control
+   ```
 
 ## 🔥 The Crisis
 
