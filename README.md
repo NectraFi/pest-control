@@ -19,6 +19,15 @@ AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 
 # Pest Control - Emergency NPM Malware Exterminator
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/releases)
+[![GitHub license](https://img.shields.io/github/license/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/jxrstudios/pest-control)](https://github.com/jxrstudios/pest-control/commits/main)
+[![npm](https://img.shields.io/npm/dt/@jxrstudios/pest-control)](https://www.npmjs.com/package/@jxrstudios/pest-control)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jxrstudios/pest-control/publish.yml)](https://github.com/jxrstudios/pest-control/actions)
+
+
 > A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
 
 ## 🚀 10-Second Fix

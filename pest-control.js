@@ -14,10 +14,17 @@ const PROTECTION_KEY = crypto.createHash('sha256').update('npm-malware-extermina
 
 function validateScriptIntegrity() {
   try {
+    // Skip integrity check in development mode
+    if (fs.existsSync(path.join(process.cwd(), '.env.development'))) {
+      console.log('\x1b[33m⚠️  Development mode: Skipping integrity check\x1b[0m');
+      return;
+    }
+    
     const scriptContent = fs.readFileSync(__filename, 'utf8');
     if (!scriptContent.includes(SCRIPT_SIGNATURE)) {
       console.log('\x1b[31m❌ SECURITY ALERT: Script integrity compromised\x1b[0m');
       console.log('\x1b[33m🛡️  Download authentic version from official repository\x1b[0m');
+      console.log('\x1b[36m💡 For local development, create a .env.development file\x1b[0m');
       process.exit(1);
     }
   } catch (error) {
