@@ -1,6 +1,6 @@
 {
   "name": "@jxrstudios/pest-control",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Emergency tool to remove the ansi-regex malware and related compromised npm packages",
   "main": "pest-control.js",
   "bin": {
@@ -29,20 +29,13 @@
     "url": "git+https://github.com/NectraFi/pest-control.git"
   },
   "publishConfig": {
-    "@jxrstudios:registry": "https://npm.pkg.github.com"
-  },
-  "homepage": "https://github.com/NectraFi/pest-control#readme",
-  "bugs": {
-    "url": "https://github.com/NectraFi/pest-control/issues"
-  },
-  "bugs": {
-    "url": "https://github.com/NectraFi/pest-control/issues"
-  },
-  "homepage": "https://github.com/NectraFi/pest-control#readme",
-  "publishConfig": {
+    "@jxrstudios:registry": "https://npm.pkg.github.com",
     "access": "public",
-    "provenance": true,
-    "registry": "https://registry.npmjs.org/"
+    "provenance": true
+  },
+  "homepage": "https://github.com/NectraFi/pest-control#readme",
+  "bugs": {
+    "url": "https://github.com/NectraFi/pest-control/issues"
   },
   "overrides": {
     "ansi-regex": "5.0.1",
