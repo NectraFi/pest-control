@@ -139,36 +139,15 @@ For npm users, the tool also injects a gated `preinstall` script that runs `npm-
 
 Pest Control can verify its source repository via a signed JWT before running. This helps ensure you’re using the authentic tool.
 
-Set these in your `.env` (already gitignored):
+Environment variables (kept in `.env.local`, which is already gitignored):
 
-```ini
-GITHUB_REPO_URL=https://github.com/NectraFi/pest-control.git
-JWT_SECRET=change-me
-SOURCE_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....
-```
+- `GITHUB_REPO_URL` — expected GitHub repo URL
+- `JWT_SECRET` — your secret key (do not commit it)
+- `SOURCE_JWT` — signed JWT token
 
-Claims validated (HS256):
-- `repo`: must match `GITHUB_REPO_URL` (with `.git` suffix tolerated)
-- `owner`: must be `NectraFi`
-- `domain`: must be `github.com`
-- Optional `exp` / `nbf` are honored
+Validated claims (HS256): `repo`, `owner`, `domain`, with optional `exp`/`nbf`.
 
-Quick token generator using Node (PowerShell):
-
-```powershell
-$secret = "change-me";
-$payload = @{repo='https://github.com/NectraFi/pest-control'; owner='NectraFi'; domain='github.com'; exp=[math]::Floor([DateTimeOffset]::UtcNow.ToUnixTimeSeconds()+3600)} | ConvertTo-Json -Compress;
-$head = '{"alg":"HS256","typ":"JWT"}';
-function b64url($s){
-  $b=[System.Text.Encoding]::UTF8.GetBytes($s);
-  [Convert]::ToBase64String($b).TrimEnd('=').Replace('+','-').Replace('/','_')
-}
-$h=b64url $head; $p=b64url $payload;
-$sig = [Convert]::ToBase64String((New-Object System.Security.Cryptography.HMACSHA256([Text.Encoding]::UTF8.GetBytes($secret))).ComputeHash([Text.Encoding]::UTF8.GetBytes("$h.$p"))).TrimEnd('=').Replace('+','-').Replace('/','_');
-"$h.$p.$sig"
-```
-
-Note: If `SOURCE_JWT` or `JWT_SECRET` are not set, the tool proceeds with a warning (enforcement optional). Keep `.env` private.
+Security note: Do not paste token-generation commands or secrets into the README. Keep `.env` files private.
 
 ## Keywords (SEO)
 
