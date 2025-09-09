@@ -5,7 +5,7 @@
   ██║     ███████╗███████║   ██║       ╚██████╗██║  ██║██║     
   ╚═╝     ╚══════╝╚══════╝   ╚═╝        ╚═════╝╚═╝  ╚═╝╚═╝     
 
-  🚀 NPM Malware Extermination Tool v1.1.5
+  💀 NPM Malware Extermination Tool v1.1.6
   BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
   AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 
