@@ -28,6 +28,10 @@ AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
   
 </div>
 
+<p align="center">
+  <img src="assets/pest-control-icon.svg" alt="Pest Control icon" width="56" height="56" />
+</p>
+
 </div>
 
 ---
@@ -330,6 +334,15 @@ If any result looks suspicious (unexpected network calls, credential headers, or
 - `package.json`: a `pestControl` block with certificate ID, timestamp, and status
 - `package-lock.json`: a `pestControl` block reflecting enforced safe versions (npm)
 - `SECURITY_CERTIFICATE.txt`: human-readable certificate summary
+
+## Social Preview (Sharing)
+
+To get a clean preview card when sharing the repo:
+
+1. Open your repo page on GitHub.
+2. Go to `Settings` > `General` > `Social preview`.
+3. Upload `assets/social-preview.svg` (or the exported PNG if GitHub requires it).
+4. Save. GitHub will use this image for link previews.
 
 ## Why Trust This?
 
