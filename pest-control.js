@@ -7,9 +7,9 @@ const os = require('os');
 const crypto = require('crypto');
 
 // Anti-tampering and bot protection
-const TOOL_VERSION = '1.1.0';
+const TOOL_VERSION = '1.1.9';
 // Important: keep this as a literal so validateScriptIntegrity() can find it in file contents
-const SCRIPT_SIGNATURE = 'PEST_CONTROL_v1.1.0_AUTHENTIC';
+const SCRIPT_SIGNATURE = 'PEST_CONTROL_v1.1.9_AUTHENTIC';
 const PROTECTION_KEY = crypto.createHash('sha256').update('npm-malware-exterminator-2024').digest('hex');
 
 function validateScriptIntegrity() {
@@ -62,6 +62,74 @@ const colors = {
 
 function log(message, color = 'reset') {
   console.log(`${colors[color]}${message}${colors.reset}`);
+}
+
+// Enhanced JSON parsing with error handling
+function safeJsonParse(filePath, content = null) {
+  try {
+    const jsonContent = content || fs.readFileSync(filePath, 'utf8');
+    
+    // Check for empty files
+    if (!jsonContent.trim()) {
+      throw new Error(`Empty JSON file: ${filePath}`);
+    }
+    
+    // Attempt to parse JSON
+    const parsed = JSON.parse(jsonContent);
+    return { success: true, data: parsed, error: null };
+  } catch (error) {
+    const errorDetails = {
+      success: false,
+      data: null,
+      error: error.message,
+      filePath: filePath
+    };
+    
+    // Provide helpful error messages based on common issues
+    if (error.message.includes('Unexpected end of JSON input')) {
+      errorDetails.helpMessage = 'The JSON file appears to be empty or truncated. Please ensure it contains valid JSON content.';
+    } else if (error.message.includes('Unexpected token')) {
+      errorDetails.helpMessage = 'The JSON file contains invalid syntax. Please check for missing commas, brackets, or quotes.';
+    } else if (error.message.includes('Empty JSON file')) {
+      errorDetails.helpMessage = 'The JSON file is empty. Please add valid JSON content or remove the file if not needed.';
+    } else {
+      errorDetails.helpMessage = 'The JSON file contains invalid syntax. Please validate the JSON format.';
+    }
+    
+    return errorDetails;
+  }
+}
+
+// Enhanced package.json validation
+function validatePackageJson(filePath) {
+  const result = safeJsonParse(filePath);
+  
+  if (!result.success) {
+    log(`❌ Invalid package.json detected: ${filePath}`, 'red');
+    log(`   Error: ${result.error}`, 'yellow');
+    log(`   Help: ${result.helpMessage}`, 'cyan');
+    
+    // Offer to create a basic package.json for empty files
+    if (result.error.includes('Empty JSON file')) {
+      log(`   💡 Tip: You can create a basic package.json with: npm init -y`, 'blue');
+    }
+    
+    return result;
+  }
+  
+  // Validate required fields
+  const pkg = result.data;
+  const warnings = [];
+  
+  if (!pkg.name) warnings.push('Missing "name" field');
+  if (!pkg.version) warnings.push('Missing "version" field');
+  
+  if (warnings.length > 0) {
+    log(`⚠️  Package.json warnings for ${filePath}:`, 'yellow');
+    warnings.forEach(warning => log(`   - ${warning}`, 'yellow'));
+  }
+  
+  return result;
 }
 
 function sleep(ms) {
@@ -349,7 +417,12 @@ async function scanForMalware() {
         try {
           const packageJsonPath = path.join(packagePath, 'package.json');
           if (fs.existsSync(packageJsonPath)) {
-            const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+            const result = validatePackageJson(packageJsonPath);
+            if (!result.success) {
+              log(`⚠️  Skipping malformed package.json: ${packageJsonPath}`, 'yellow');
+              continue;
+            }
+            const packageJson = result.data;
             const version = packageJson.version;
             
             // Check if this is actually a malicious version
@@ -408,7 +481,12 @@ async function scanForMalware() {
               try {
                 const nestedPackageJson = path.join(p.trim(), 'package.json');
                 if (fs.existsSync(nestedPackageJson)) {
-                  const nestedPkg = JSON.parse(fs.readFileSync(nestedPackageJson, 'utf8'));
+                  const result = validatePackageJson(nestedPackageJson);
+                  if (!result.success) {
+                    log(`⚠️  Skipping malformed nested package.json: ${nestedPackageJson}`, 'yellow');
+                    continue;
+                  }
+                  const nestedPkg = result.data;
                   if (isMalwareVersion(pkg, nestedPkg.version)) {
                     found.push(`${pkg} (nested)`);
                     actualMalwareFound = true;
@@ -706,7 +784,15 @@ async function shield() {
   const shieldSpinner = showLoading('🛡️  INSTALLING SECURITY SHIELDS...', 'spinner');
   
   try {
-    const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+    const result = validatePackageJson('package.json');
+    if (!result.success) {
+      clearInterval(shieldSpinner);
+      process.stdout.write('\r');
+      log('❌ Cannot install security shields: Invalid package.json', 'red');
+      log('   Please fix the package.json file before continuing', 'yellow');
+      return false;
+    }
+    const pkg = result.data;
     pkg.overrides = pkg.overrides || {};
 
     let changes = 0;
@@ -925,7 +1011,12 @@ async function main() {
       const result = execSync(`npm ls ${MALWARE_PACKAGES.join(' ')} --json`, { encoding: 'utf8', timeout: 30000 });
       clearInterval(versionCheckSpinner);
       process.stdout.write('\r');
-      const depTree = JSON.parse(result);
+      const parseResult = safeJsonParse(null, result);
+      if (!parseResult.success) {
+        log('⚠️  Warning: Could not parse npm ls output, skipping version verification', 'yellow');
+        return;
+      }
+      const depTree = parseResult.data;
       let safeCount = 0, unsafeCount = 0, unknownCount = 0;
       MALWARE_PACKAGES.forEach(pkg => {
         const dep = depTree.dependencies?.[pkg];
@@ -945,7 +1036,12 @@ async function main() {
       // Check package.json ranges to ensure they don't invite malicious re-installs
       try {
         if (fs.existsSync('package.json')) {
-          const pkgJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const result = validatePackageJson('package.json');
+          if (!result.success) {
+            log('⚠️  Skipping package.json range check due to invalid JSON', 'yellow');
+            return;
+          }
+          const pkgJson = result.data;
           const sections = ['dependencies','devDependencies','optionalDependencies','peerDependencies'];
           for (const sect of sections) {
             const deps = pkgJson[sect] || {};
@@ -1009,7 +1105,12 @@ async function main() {
           const certificateId = crypto.createHash('sha256').update(PROTECTION_KEY + timestamp).digest('hex').slice(0,16);
           try {
             if (fs.existsSync('package.json')) {
-              const pkgJson = JSON.parse(fs.readFileSync('package.json','utf8'));
+              const result = validatePackageJson('package.json');
+              if (!result.success) {
+                log('⚠️  Cannot add security certificate to invalid package.json', 'yellow');
+                return;
+              }
+              const pkgJson = result.data;
               pkgJson.pestControl = {
                 certified: true,
                 timestamp,
@@ -1023,7 +1124,12 @@ async function main() {
           } catch {}
           try {
             if (fs.existsSync('package-lock.json')) {
-              const lock = JSON.parse(fs.readFileSync('package-lock.json','utf8'));
+              const result = safeJsonParse('package-lock.json');
+              if (!result.success) {
+                log('⚠️  Cannot add security certificate to invalid package-lock.json', 'yellow');
+                return;
+              }
+              const lock = result.data;
               lock.pestControl = {
                 certified: true,
                 timestamp,
