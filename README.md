@@ -277,6 +277,45 @@ You’ll see “No malware detected.” Pest Control still performs full cleanup
 - pnpm — `package.json#pnpm.overrides` pins safe versions
 - After success, the lockfile is regenerated for your detected package manager
 
+## 🧪 Testing the Tool
+
+To test the tool in a safe environment, we've included a test project that simulates a vulnerable setup:
+
+### Using the Test Project
+
+1. **Windows Users**:
+   ```powershell
+   .\test.ps1
+   ```
+
+2. **macOS/Linux Users**:
+   ```bash
+   chmod +x test.sh
+   ./test.sh
+   ```
+
+This will:
+- Create a test project with a vulnerable dependency
+- Run `pest-control` to detect and fix the issue
+- Show you the tool in action
+
+### Manual Testing
+
+You can also manually test the tool:
+
+1. Navigate to the test project:
+   ```bash
+   cd test-project
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the tool:
+   ```bash
+   npx @jxrstudios/pest-control run
+   ```
+
 ## 🧠 Advanced Users: In-Depth Verification (Optional)
 
 > Disclaimer: Broad ecosystem scans can miss localized or repackaged threats. If you suspect compromise, validate at the file/directory level. These checks are optional and safe to run.

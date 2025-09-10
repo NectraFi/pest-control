@@ -1,11 +1,12 @@
 {
   "name": "@jxrstudios/pest-control",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "Emergency tool to remove the ansi-regex malware and related compromised npm packages",
   "main": "pest-control.js",
   "bin": {
     "pest-control": "./pest-control.js"
   },
+  "preferGlobal": true,
   "keywords": [
     "security",
     "malware",
