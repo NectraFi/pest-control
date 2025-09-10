@@ -29,7 +29,6 @@
     "url": "git+https://github.com/NectraFi/pest-control.git"
   },
   "publishConfig": {
-    "@jxrstudios:registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "homepage": "https://github.com/NectraFi/pest-control#readme",
@@ -69,12 +68,14 @@
     }
   },
   "scripts": {
-    "preinstall": "node -e \"const a=(process.env.npm_config_user_agent||''); if(a.includes('npm/')){ try{ require('child_process').execSync('npx --yes npm-force-resolutions', {stdio:'inherit'});}catch(e){ console.log('npm-force-resolutions failed (continuing):', e.message);} } else { console.log('Skipping npm-force-resolutions (non-npm user agent)'); }\""
+    "preinstall": "node -e \"const a=(process.env.npm_config_user_agent||''); if(a.includes('npm/')){ try{ require('child_process').execSync('npx --yes npm-force-resolutions', {stdio:'inherit'});}catch(e){ console.log('npm-force-resolutions failed (continuing):', e.message);} } else { console.log('Skipping npm-force-resolutions (non-npm user agent)'); }\"",
+    "publish:npm": "powershell -ExecutionPolicy Bypass -File ./scripts/publish-npm.ps1",
+    "publish:npm:auto": "powershell -ExecutionPolicy Bypass -File ./scripts/publish-npm.ps1 -Token $env:NPM_TOKEN"
   },
   "pestControl": {
     "certified": true,
-    "timestamp": "2025-09-09T09:29:35.304Z",
-    "certificateId": "5ed1ee99d59533d4",
+    "timestamp": "2025-09-10T16:25:45.416Z",
+    "certificateId": "9dac4559716a5b21",
     "status": "CERTIFIED CLEAN & SECURE",
     "safe": {
       "ansi-regex": "5.0.1",

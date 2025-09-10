@@ -8,26 +8,52 @@
 ██║     ███████╗███████║   ██║       ╚██████╗██║  ██║██║     
 ╚═╝     ╚══════╝╚══════╝   ╚═╝        ╚═════╝╚═╝  ╚═╝╚═╝     
 
-💀 NPM Malware Extermination Tool v1.1.6
+💀 NPM Malware Extermination Tool v1.1.9
 BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
 AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 ```
 
 [![Version](https://img.shields.io/github/v/release/jxrstudios/pest-control?color=blue&label=version&style=for-the-badge)](https://github.com/jxrstudios/pest-control/releases)
 [![License](https://img.shields.io/github/license/jxrstudios/pest-control?color=blueviolet&style=for-the-badge)](https://github.com/jxrstudios/pest-control/blob/main/LICENSE)
-[![Stars](https://img.shields.io/github/stars/jxrstudios/pest-control?color=yellow&style=for-the-badge)](https://github.com/jxrstudios/pest-control/stargazers)
-[![Issues](https://img.shields.io/github/issues/jxrstudios/pest-control?color=orange&style=for-the-badge)](https://github.com/jxrstudios/pest-control/issues)
 [![Downloads](https://img.shields.io/npm/dt/@jxrstudios/pest-control?color=green&style=for-the-badge)](https://www.npmjs.com/package/@jxrstudios/pest-control)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/jxrstudios/pest-control/publish.yml?color=success&style=for-the-badge)](https://github.com/jxrstudios/pest-control/actions)
+
+[![GitHub Advisory](https://img.shields.io/badge/Advisory-GHSA--jvhh--2m83--6w29-critical?style=for-the-badge&color=red)](https://github.com/advisories/GHSA-jvhh-2m83-6w29)
+[![Socket.dev Announcement](https://img.shields.io/badge/Socket.dev-ansi--regex%20malware-blue?style=for-the-badge)](https://socket.dev/blog/ansi-regex-malware)
+
+<div>
+  <a href="https://github.com/advisories/GHSA-jvhh-2m83-6w29">Official GitHub Advisory</a>
+  •
+  <a href="https://socket.dev/blog/ansi-regex-malware">Socket.dev announcement</a>
+  
+</div>
 
 </div>
 
 ---
 
-# Pest Control - Emergency NPM Malware Exterminator
+# Pest Control - NPM Malware Exterminator
 
 
-> A zero-dependency, cross-platform CLI to exterminate the ansi-regex supply-chain attack and related variants.
+## ⚡ Quick Start
+
+1. Run in your project root:
+   ```bash
+   npx @jxrstudios/pest-control
+   ```
+2. The tool will scan, clean, and enforce safe versions automatically.
+3. Reinstall dependencies with your package manager:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+No configuration, no secrets, zero dependencies required.
+
+---
 
 ## 🚀 Installation
 
@@ -37,23 +63,11 @@ AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 npx @jxrstudios/pest-control
 ```
 
-### Install from GitHub Packages
-1. Create a GitHub Personal Access Token with `read:packages` scope
-2. Add the following to your `~/.npmrc`:
-   ```
-   @jxrstudios:registry=https://npm.pkg.github.com/
-   //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
-   ```
-3. Install the package:
-   ```bash
-   npm install @jxrstudios/pest-control
-   ```
-4. Run the tool:
-   ```bash
-   npx pest-control
-   ```
 
-## 🔥 The Crisis
+
+## One of History's Biggest Supply-Chain Attacks — Overnight
+
+### What You Need to Know
 
 > **WARNING:** The npm ecosystem is under attack! Malicious versions of widely-used color utilities have been detected:
 
@@ -68,6 +82,79 @@ npx @jxrstudios/pest-control
 > 💡 **Note:** These packages are used by thousands of projects and their dependencies. Even if you don't use them directly, your project might be at risk!
 
 These exfiltrate secrets (env vars, CI tokens) and can persist via nested deps and lockfiles.
+
+## ✅ Protected Packages & Safe Versions
+
+The CLI enforces the following safe versions in your project (via npm `overrides`, Yarn `resolutions`, and pnpm `pnpm.overrides`). These are client-side safe pins only — no backend internals are exposed.
+
+| Package | Safe Version |
+|---------|--------------|
+| ansi-regex | 5.0.1 |
+| ansi-styles | 4.3.0 |
+| color-name | 1.1.3 |
+| color-convert | 1.9.3 |
+| color-string | 1.6.0 |
+| is-arrayish | 0.2.1 |
+| simple-swizzle | 0.2.1 |
+| supports-color | 7.2.0 |
+
+These pins are applied automatically and kept in sync across npm, Yarn, and pnpm to prevent compromised versions from entering your dependency tree.
+
+## 🔎 Identify Legit vs Counterfeit/Hijacked Packages
+
+Use these quick checks before trusting or upgrading a package:
+
+- Maintainers and org ownership
+  - Verify the maintainer list and scope ownership.
+    ```bash
+    npm view <package> maintainers
+    npm view <package> name # ensure expected scope/name
+    ```
+
+- Repository and homepage legitimacy
+  - Check that the `repository.url` and `homepage` match the real project.
+    ```bash
+    npm view <package> repository.url homepage
+    ```
+
+- Version timeline anomalies
+  - Look for sudden version jumps or bursts of releases.
+    ```bash
+    npm view <package> time
+    npm view <package> versions --json
+    ```
+
+- Dist-tags and downloads sanity
+  - Confirm `latest` points to the expected version; look for unusual download spikes.
+    ```bash
+    npm view <package> dist-tags
+    npm view <package> downloads --json 2>/dev/null || echo "Check npm trends site"
+    ```
+
+- Tarball integrity and contents
+  - Inspect the package tarball when in doubt.
+    ```bash
+    npm pack <package>@<version>
+    tar -tf <downloaded-tarball.tgz> | head -n 50
+    ```
+
+- Supply‑chain hardening when investigating
+  - Avoid running lifecycle scripts while inspecting:
+    ```bash
+    npm install <package>@<version> --ignore-scripts --no-audit --no-fund
+    ```
+
+- Pin exact safe versions
+  - Lock to known‑good versions with overrides/resolutions (this tool automates that):
+    ```json
+    {
+      "overrides": {
+        "ansi-regex": "5.0.1"
+      }
+    }
+    ```
+
+If any check looks suspicious (maintainers changed, repo mismatch, unexpected dist-tag, sudden version surge), pause upgrades and pin to the last known safe version until verified.
 
 ## 🛡️ 8-Phase Security Protocol
 
@@ -187,6 +274,57 @@ You’ll see “No malware detected.” Pest Control still performs full cleanup
 - pnpm — `package.json#pnpm.overrides` pins safe versions
 - After success, the lockfile is regenerated for your detected package manager
 
+## 🧠 Advanced Users: In-Depth Verification (Optional)
+
+> Disclaimer: Broad ecosystem scans can miss localized or repackaged threats. If you suspect compromise, validate at the file/directory level. These checks are optional and safe to run.
+
+1) List vulnerable families present (tree view)
+
+```bash
+npm ls ansi-regex ansi-styles color-name color-convert color-string --all || true
+```
+
+2) Verify pinned versions in metadata and lockfiles
+
+```bash
+# package.json (npm)
+cat package.json | findstr /R /C:"\"overrides\"\|ansi-regex\|ansi-styles" 2>nul || grep -E '"overrides|ansi-regex|ansi-styles' package.json || true
+
+# package-lock.json (npm)
+findstr /I "ansi-regex ansi-styles" package-lock.json 2>nul || grep -iE 'ansi-regex|ansi-styles' package-lock.json || true
+
+# yarn.lock / pnpm-lock.yaml
+findstr /I "ansi-regex ansi-styles" yarn.lock 2>nul || grep -iE 'ansi-regex|ansi-styles' yarn.lock 2>/dev/null || true
+findstr /I "ansi-regex ansi-styles" pnpm-lock.yaml 2>nul || grep -iE 'ansi-regex|ansi-styles' pnpm-lock.yaml 2>/dev/null || true
+```
+
+3) Search node_modules for suspicious exfiltration patterns
+
+```bash
+# Windows (PowerShell)
+Get-ChildItem -Path node_modules -Recurse -Include *.js -ErrorAction SilentlyContinue |
+  Select-String -Pattern 'process.env','fetch\(','http://','https://','child_process','curl','Invoke-WebRequest','setRequestHeader','Authorization' |
+  Select-Object Path, LineNumber -Unique | Select-Object -First 200
+
+# macOS/Linux
+grep -RIn --include=*.js -E "process\.env|fetch\(|https?://|child_process|curl|setRequestHeader|Authorization" node_modules 2>/dev/null | head -n 200
+```
+
+4) Inspect a specific tarball before trusting it
+
+```bash
+npm pack <pkg>@<version>
+tar -tf <pkg>-<version>.tgz | head -n 80
+```
+
+5) Install for analysis only (no scripts)
+
+```bash
+npm install <pkg>@<version> --ignore-scripts --no-audit --no-fund
+```
+
+If any result looks suspicious (unexpected network calls, credential headers, or unrecognized maintainers), pause upgrades and pin to the last known safe version. Then run this tool’s cleanup again.
+
 ## Certification Outputs
 
 - `package.json`: a `pestControl` block with certificate ID, timestamp, and status
@@ -198,13 +336,6 @@ You’ll see “No malware detected.” Pest Control still performs full cleanup
 - Zero Dependencies — Native Node.js only
 - Transparent — Simple, readable code
 - Safe Defaults — Focused file ops with clear logs and backups via lockfile regen
-
-## Resources
-
-- Official advisory: https://github.com/advisories/GHSA-jvhh-2m83-6w29
-- Socket.dev blog: https://socket.dev/blog/ansi-regex-malware
-
----
 
 Community-driven. Use at your own risk. Issues and PRs welcome.
 
@@ -257,20 +388,6 @@ For npm users, the tool also injects a gated `preinstall` script that runs `npm-
 
 - Can I run it on CI safely?  
   Yes. It is zero-dependency and uses native Node modules. Add `npx pest-control` before your install.
-
-## Source URL Enforcement (Optional)
-
-Pest Control can verify its source repository via a signed JWT before running. This helps ensure you’re using the authentic tool.
-
-Environment variables (kept in `.env.local`, which is already gitignored):
-
-- `GITHUB_REPO_URL` — expected GitHub repo URL
-- `JWT_SECRET` — your secret key (do not commit it)
-- `SOURCE_JWT` — signed JWT token
-
-Validated claims (HS256): `repo`, `owner`, `domain`, with optional `exp`/`nbf`.
-
-Security note: Do not paste token-generation commands or secrets into the README. Keep `.env` files private.
 
 ## Keywords (SEO)
 
