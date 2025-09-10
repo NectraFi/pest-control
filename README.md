@@ -13,10 +13,9 @@ BATTLE-TESTED • ENTERPRISE-GRADE • BOT-RESISTANT
 AUTHENTIC SECURITY TOOL - VERIFIED INTEGRITY
 </code></pre>
 
-[![Version](https://img.shields.io/github/v/release/NectraFi/pest-control?color=blue&label=version&style=for-the-badge)](https://github.com/NectraFi/pest-control/releases)
+[![npm Version](https://img.shields.io/npm/v/@jxrstudios/pest-control?color=blue&label=npm%20version&style=for-the-badge)](https://www.npmjs.com/package/@jxrstudios/pest-control)
 [![License](https://img.shields.io/github/license/NectraFi/pest-control?color=blueviolet&style=for-the-badge)](https://github.com/NectraFi/pest-control/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dt/@jxrstudios/pest-control?color=green&style=for-the-badge)](https://www.npmjs.com/package/@jxrstudios/pest-control)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/NectraFi/pest-control/publish.yml?color=success&style=for-the-badge)](https://github.com/NectraFi/pest-control/actions)
 
 [![GitHub Advisory](https://img.shields.io/badge/Advisory-GHSA--jvhh--2m83--6w29-critical?style=for-the-badge&color=red)](https://github.com/advisories/GHSA-jvhh-2m83-6w29)
 [![Socket.dev Announcement](https://img.shields.io/badge/Socket.dev-ansi--regex%20malware-blue?style=for-the-badge)](https://socket.dev/blog/ansi-regex-malware)
